@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+<main>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col">
+                <form th:action="@{/careers/__${action}__}" th:object="${career}" method="post" autocomplete="off"
+                      class="needs-validation" novalidate>
+                    <input type="hidden" th:field="*{id}">
+                    <div class="form-floating mb-3">
+                        <select th:field="*{university}" id="university" class="form-select" aria-label="Select university"
+                                required>
+
+                            <option th:each="university : ${universities}" th:text="${university.name}"
+                                    th:value="${university.id}"></option>
+                        </select>
+                        <label for="university">Select university</label>
+                        <div class="invalid-feedback">University is required</div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" th:field="*{name}" id="name" class="form-control" required>
+                        <label for="name">Name of Career</label>
+                        <div class="invalid-feedback">Name is required</div>
+                    </div>
+                    <button th:text="${action == 'create' ? 'Save' : 'Update'}" type="submit" class="btn btn-dark"></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/validation.js}"></script>
+</main>
+</body>
+</html>

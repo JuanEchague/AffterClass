@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+<main>
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col">
+        <div th:if="${success}" th:text="${success}" class="alert alert-success" role="alert"></div>
+
+        <div th:if="${users.isEmpty()}" class="alert alert-info alert-dismissible fade show" role="alert">
+          <h4>You must enter users.</h4>
+          <a th:href="@{/users/form}" class="alert-link">Create users.</a>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div th:unless="${users.isEmpty()}" class="table-responsive">
+          <table class="table table-hover table-bordered">
+            <thead>
+            <tr class="table-dark">
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+              <td th:text="${user.id}"></td>
+              <td th:text="${user.name}"></td>
+              <td th:text="${user.email}"></td>
+              <td th:text="${user.role}"></td>
+              <td><a class="btn btn-warning" th:href="@{/users/form/__${user.id}__}">Update</a></td>
+              <td>
+                <form th:action="@{/users/delete/__${user.id}__}" method="POST">
+                  <button type="submit" class="btn btn-danger btn-delete">Delete</button>
+                </form>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

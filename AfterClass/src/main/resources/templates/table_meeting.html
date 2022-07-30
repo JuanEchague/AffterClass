@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+<main>
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col">
+        <div th:if="${success}" th:text="${success}" class="alert alert-success" role="alert"></div>
+
+        <div th:if="${meetings.isEmpty()}" class="alert alert-info alert-dismissible fade show" role="alert">
+          <h4>You must enter meetings.</h4>
+          <a th:href="@{/meetings/form}" class="alert-link">Create meetings.</a>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div th:unless="${meetings.isEmpty()}" class="table-responsive">
+          <table class="table table-hover table-bordered">
+            <thead>
+            <tr class="table-dark">
+              <th>ID</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Date</th>
+              <th>scheduled</th>
+              <th>Link</th>
+              <th>Member</th>
+              <th>Study Group</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="meeting : ${meetings}">
+              <td th:text="${meeting.id}"></td>
+              <td th:text="${meeting.name}"></td>
+              <td th:text="${meeting.description}"></td>
+              <td th:text="${meeting.date}"></td>
+              <td th:text="${meeting.scheduled}"></td>
+              <td th:text="${meeting.link}"></td>
+              <td th:text="${meeting.member.full_name}"></td>
+              <td th:text="${meeting.studygroup.name}"></td>
+              <td><a class="btn btn-warning" th:href="@{/meetings/form/__${meeting.id}__}">Update</a></td>
+              <td>
+                <form th:action="@{/meetings/delete/__${meeting.id}__}" method="POST">
+                  <button type="submit" class="btn btn-danger btn-delete">Delete</button>
+                </form>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

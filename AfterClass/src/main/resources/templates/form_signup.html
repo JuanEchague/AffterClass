@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>AfterClass - Sing Up</title>
+    <link rel="stylesheet" href="../static/css/normalize.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+           
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+</head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+<main>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-6">
+                <form th:action="@{/users/__${action}__}" th:object="${register}" method="post" autocomplete="off"
+                      class="needs-validation" novalidate>
+                    <!--  <input type="hidden" th:field="*{id}">-->
+
+                    <div class="form-floating mb-3">
+                        <input type="text" th:field="*{user_name}" id="user_name" class="form-control" placeholder="Username"
+                               required>
+                        <label for="user_name">Username</label>
+                        <div class="invalid-feedback">Username is required</div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" th:field="*{full_name}" id="full_name" class="form-control" placeholder="Full Name">
+                        <label for="full_name">Full name</label>
+                        <!-- <div class="invalid-feedback">Full Name is required</div>-->
+                    </div>
+                    <div class="form-floating mb-3">
+                        Gender
+                        <div class="container">
+                            
+                                
+                            <div class="form-check form-check-inline">
+                                
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="female" value="female">
+                               
+                                <label class="form-check-label" for="female">Female</label>
+                               
+                            </div>
+                            
+                            <div class="form-check form-check-inline">
+                            
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="male" value="male">
+                            
+                                <label class="form-check-label" for="male">Male</label>
+                          
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="another" value="another">
+                            
+                                <label class="form-check-label" for="another">Another</label>
+                             
+                            </div>
+                        
+                        </div>
+                        <!-- <div class="invalid-feedback">Full Name is required</div>-->
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" th:field="*{email}" id="email" class="form-control" placeholder="Email"
+                               required>
+                        <label for="email">Email</label>
+                        <div class="invalid-feedback">Email is required</div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="password" th:field="*{password}" id="password" class="form-control"
+                               placeholder="Password" required>
+                        <label for="password">Password</label>
+                        <div class="invalid-feedback">Password is required</div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <select th:field="*{occupation}" id="occupation" class="form-select" aria-label="Select Occupation">
+                            <option> Student </option>
+                            <option> Mentor </option>
+                            <option> Professional </option>
+                        </select>
+                        <label for="occupation">Select Occupation</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                      
+                        <select th:field="*{university}" id="university" class="form-select" aria-label="Select University"
+                                required>
+                            <option th:each="university : ${universities}" th:text="${university.name}"
+                                    th:value="${university.id}">Sellect your university</option>
+                        </select>
+                        <label for="university">Select University</label>
+                        <div class="invalid-feedback">University is required</div>
+                    </div>
+
+                    <!--  <div class="form-floating mb-3">
+                          <select th:field="*{role}" id="role" class="form-select" aria-label="Select role"
+                                  required>
+                              <option selected value="">Role</option>
+                              <option th:each="role : ${T(edu.egg.spring.entity.Role).values()}" th:text="${role}"
+                                      th:value="${role}"></option>
+                          </select>
+                          <label for="role">Select role</label>
+                          <div class="invalid-feedback">Role is required</div>
+                      </div>-->
+
+                    <button th:text="${action == 'create' ? 'Create' : 'Update'}" type="submit"
+                            class="btn btn-primary">Next</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/validation.js}"></script>
+</main>
+</body>
+</html>

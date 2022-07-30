@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+<main>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col">
+                <div th:if="${success}" th:text="${success}" class="alert alert-success" role="alert"></div>
+
+                <div th:if="${studyGroups.isEmpty()}" class="alert alert-info alert-dismissible fade show" role="alert">
+                    <h4>You must enter studyGroups.</h4>
+                    <a th:href="@{/studyGroups/form}" class="alert-link">Create studyGroups.</a>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                <div th:unless="${studyGroups.isEmpty()}" class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                        <tr class="table-dark">
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Subject</th>
+<!--                            <th>Description</th>-->
+                            <th>Limit People</th>
+                            <th>Creation Date</th>
+<!--                            <th>Score</th>-->
+<!--                            <th>Link</th>-->
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="studyGroup : ${studyGroups}">
+                            <td th:text="${studyGroup.id}"></td>
+                            <td th:text="${studyGroup.name}"></td>
+                            <td th:text="${studyGroup.subject.name}"></td>
+<!--                            <td th:text="${studyGroup.description}"></td>-->
+                            <td th:text="${studyGroup.limit_people}"></td>
+                            <td th:text="${studyGroup.creation_date}"></td>
+
+<!--                            <td th:text="${studyGroup.score}"></td>-->
+<!--                            <td th:text="${studyGroup.link}"></td>-->
+                            <td><a class="btn btn-warning" th:href="@{/studyGroups/form/__${studyGroup.id}__}">Update</a></td>
+                            <td>
+                                <form th:action="@{/studyGroups/delete/__${studyGroup.id}__}" method="POST">
+                                    <button type="submit" class="btn btn-danger btn-delete">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

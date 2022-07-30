@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+<main>
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col">
+        <div th:if="${success}" th:text="${success}" class="alert alert-success" role="alert"></div>
+
+        <div th:if="${members.isEmpty()}" class="alert alert-info alert-dismissible fade show" role="alert">
+          <h4>You must enter members.</h4>
+          <a th:href="@{/members/form}" class="alert-link">Create members.</a>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div th:unless="${members.isEmpty()}" class="table-responsive">
+          <table class="table table-hover table-bordered">
+            <thead>
+            <tr class="table-dark">
+              <th>ID</th>
+              <th>Full Name</th>
+              <th>Birth Date</th>
+              <th>Gender</th>
+              <th>Occupation</th>
+              <th>Description</th>
+              <th>User</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="member : ${members}">
+              <td th:text="${member.id}"></td>
+              <td th:text="${member.full_name}"></td>
+              <td th:text="${member.birth_date}"></td>
+              <td th:text="${member.gender}"></td>
+              <td th:text="${member.occupation}"></td>
+              <td th:text="${member.description}"></td>
+              <td th:text="${member.user}"></td>
+              <td><a class="btn btn-warning" th:href="@{/members/form/__${member.id}__}">Update</a></td>
+              <td>
+                <form th:action="@{/members/delete/__${member.id}__}" method="POST">
+                  <button type="submit" class="btn btn-danger btn-delete">Delete</button>
+                </form>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

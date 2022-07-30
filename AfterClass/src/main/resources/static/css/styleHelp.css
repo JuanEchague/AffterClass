@@ -1,0 +1,106 @@
+.nav{
+  background-color: antiquewhite;
+}
+
+.carrousel__animated-text {
+    color: #fff;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    padding: 0 40px;
+    height: 60px;
+    overflow: hidden;
+    float: left;
+}
+.carrousel__line {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 30px;
+    line-height: 60px;
+}
+.container {
+    align-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+/* Tabs */
+.tl_container {margin: 2rem 0;}
+
+.tl_list {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: left;
+  list-style: none;
+}
+
+.tl_list li {
+  margin: 0;
+  width: 33.3333%;
+  text-align: center;
+  border-radius: 4px 4px 0 0;
+}
+
+.tl_list a {
+  color: #fff;
+  padding: 1rem 0.5rem;
+  display: block;
+  border: none;
+  text-decoration: none;
+  text-shadow: none;
+}
+.tl_list a:hover,
+.tl_list a:focus {
+  text-shadow: 0 2px 4px #000
+}
+
+
+/* White focus ring - so you can see when it's focussed (not required) */
+.tl_section h2:focus {
+  outline: 1px solid currentcolor;
+}
+
+
+/* Section styling (optional) */
+
+.tl_section {
+  padding: 1rem 1.5rem;
+  min-height: 8rem;
+  border-radius: 0 0 4px 4px;
+  text-shadow: none;
+}
+.tl_section h2 {
+  margin-top: 1rem;
+}
+
+
+/* tab & panel colour */
+
+.a,
+.a:hover,
+.a:focus {background-color: rgba(255,85,160,.3);}
+.b,
+.b:hover,
+.b:focus  {background-color: rgba(160,255,85,.3);}
+.c,
+.c:hover,
+.c:focus  {background-color: rgba(85,160,255,.3);}
+.d,
+.d:hover,
+.d:focus  {background-color: rgba(85,160,255,.25);}
+.e,
+.e:hover,
+.e:focus  {background-color: rgba(85,160,255,.5);}
+/* 
+Section styling (required)
+Removes hidden sections from the keychain. 
+Only used when JavaScript is available.
+*/
+[role="tabpanel"][aria-hidden="true"] {
+    display: none;
+  }
+  
+  

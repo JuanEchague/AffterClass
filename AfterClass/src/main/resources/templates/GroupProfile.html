@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="..\static\css\styleUserProfile.css">
+    <link rel="stylesheet" href="../static/css/normalize.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+  </head>
+  <body>
+ 
+    <!--Encabezado-->
+    
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+        <div class="container">
+            <a class="navbar-brand" href="../templates/Index.html"><image src="../static/img/logo-afterclass.ico"></a>
+              <!--BOTON DESPLEGABLE PARA EL COLLAPSE-->
+              <button  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+            <!--DIV CON LISTA DEL MENU DESPLEGABLE-->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" href="../templates/Index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../templates/UserProfile.html">Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../templates/Groups.html">Groups</a>
+                </li>
+              </ul>
+              <a href="../templates/Index.html" class="btn btn-warning">Sign out</a>
+            </div>
+          </div>
+     </nav>
+  </header>
+      
+      <!--Info Perfil-->    
+      
+      
+      <div class="container">
+        
+        <!--Imagen de portada y perfil-->     
+        
+        
+        <div class="container">
+          
+          <div class="card__background-img">
+            
+            <div class="card__profile-img"></div>
+            
+          </div>
+          
+          
+        </div>
+        
+        
+        <!--Nombre del grupo y botones edit y exit-->     
+        <div class="card__name">
+          
+          <div class="container mb-2">
+            <h1>Nombre Grupo</h1>
+            <div class="d-flex justify-content-end">
+              
+              <button class="btn btn-warning justify-content-end" href="../templates/GroupProfileEdit.html">Edit</button>
+              <button class="btn btn-danger justify-content-end">Exit Group</button>
+            </div>
+          </div>        
+          
+          
+        </div>
+        
+      </div>
+      
+      <!--Contenido Perfil-->
+      <div class="card__content">
+        
+        
+        <ul class="card__list">
+          
+          
+          <li class="card__item">Item 1</li>
+          
+          
+          <li class="card__item">Item 2</li>
+          
+          
+          <li class="card__item card__item--active">Item activo</li>
+          
+          
+          
+        </ul>
+        
+        
+        <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et leo duis ut diam quam. Pulvinar sapien et ligula ullamcorper malesuada proin libero. </p>
+        
+        <!--BOTONES DE PESTAÑAS-->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="post-tab" data-bs-toggle="tab" data-bs-target="#post" type="button" role="tab" aria-controls="home" aria-selected="true">Post</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="members-tab" data-bs-toggle="tab" data-bs-target="#members" type="button" role="tab" aria-controls="members" aria-selected="false">Members</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="meetings-tab" data-bs-toggle="tab" data-bs-target="#meetings" type="button" role="tab" aria-controls="meetings" aria-selected="false">Meetings</button>
+          </li>
+        </ul>
+        
+        <div class="tab-content" id="myTabContent">
+          
+          <!--DIV PARA EL CONTENIDO DE POST-->
+          <div class="tab-pane fade show active" id="post" role="tabpanel" aria-labelledby="post-tab">
+            
+            
+        <div class="container-fluid mb-3">
+          <h4><image src="../static/img/logo-afterclass.ico">
+            Nombre Apellido
+          </h4>
+          <form action="#">
+            
+            <input type="hidden" id="id_post">
+            
+            <div class="form-group mb-3" id="tittle-group">
+              <div class="input-group">
+                <span class="input-group-text">Tittle</span>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            
+            <div class="form-group mb-3" id="post-group">
+              <div class="input-group">
+                <span class="input-group-text">Post</span>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            
+            <div class="form-group" id="buttons-group">
+              <button type="submit" class="btn btn-warning">Submit</button>
+            </div>
+            
+                    </form>    
+
+                  </div>
+                  
+                  <!--CONTAINER PARA LA LISTA DE POSTS-->
+                  <div class="container">
+                    <div class="row">
+                      <div class="col">
+                        <table class="table table-warning table-hover">
+                          <thead>
+                            <th>Tittle</th>
+                            <th>Posting User</th>
+                            <th>Action</th>
+                          </thead>
+                          <tbody>
+                            <td>Math Help</td>
+                            <td>LucasCaro97</td>
+                            <td>
+                              <button class="btn btn-warning">Show content</button>
+                            </td>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div> 
+                  </div>
+                  
+                  
+                </div>
+                <!--DIV PARA EL CONTENIDO DE MEMBERS-->
+                <div class="tab-pane fade" id="members" role="tabpanel" aria-labelledby="members-tab">
+                  
+                  <!--DIV PARA LA TABLA DE MIEMBROS-->
+                  <div class="container">
+                    <div class="row">
+                      <div class="col">
+                        <table class="table table-warning table-hover">
+                          <thead>
+                            <th>Name</th>
+                            <th>Ocupation</th>
+                          </thead>
+                          <tbody>
+                            <td>LucasCaro97</td>
+                            <td>Student</td>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div> 
+                  </div>
+                  
+                </div>
+            <div class="tab-pane fade" id="meetings" role="tabpanel" aria-labelledby="meetings-tab">
+              <!--DIV PARA LA TABLA DE MEETINGS-->
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <table class="table table-warning table-hover">
+                      <thead>
+                        <th>Tittle</th>
+                        <th>Date </th>
+                        <th> Link </th>
+                      </thead>
+                      <tbody>
+                        <td>Recognition meeting</td>
+                        <td>22/06/2022</td>
+                        <td><button class="btn btn-warning">Get Link</button></td>
+                      </tbody>
+                    </table>
+                  </div>
+                </div> 
+              </div>
+            </div>
+          </div>      
+   
+          
+          
+          
+          
+        </div>
+        
+        <footer class="bg-dark text-center py-3">
+          <span class="text-white">AfterClass - Find your place!</span>
+        </footer> 
+
+<script src="../static/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
